@@ -1,0 +1,21 @@
+/* div {
+  background-color: ;
+} */
+
+.container {
+  text-align: center;
+  background-color: white;
+}
+
+#map {
+  font-size: 30pt;
+width: 10em;
+height: 10em;
+background-color: aliceblue;
+}
+
+.centred {
+  margin: auto;
+  display: inline-block;
+}
+
