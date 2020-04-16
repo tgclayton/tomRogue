@@ -1,12 +1,18 @@
 var firstMap = {
   mapArr: [],
-  floorSym: '.',
-  wallSym: '#',
-  
+  floor: {
+    sym: '-',
+    class: 'entry-floor',
+  },
+  wall: {
+    sym: '#',
+    class: 'entry-wall',
   }
 
+}
+
 module.exports = {
-  firstMap: firstMap
+  firstMap
 }
 
 // const map = require('../scripts/map.js')

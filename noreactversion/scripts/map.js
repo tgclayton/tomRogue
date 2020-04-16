@@ -1,11 +1,12 @@
-module.exports = {
-  makeRandomMap,
-  displayMap
-}
+
 
 //
 const maps = require('../data/maps')
 
+let avatar = {
+  symbol: '@',
+  location: 0,
+}
 
 function makeRandomMap(map, height, width) {
   let size = (height * width)
@@ -26,24 +27,31 @@ function makeRandomMap(map, height, width) {
     }
 
   }
+  addAvatar()
 }
 
-function displayMap(map) {
+
+
+function addAvatar() {
+  avatar.location = Math.floor(maps.firstMap.mapArr.length / 2)
+}
+
+function displayMap(map, width) {
   let c = 1
   let dispArr = []
-  // console.log(arr)
+
   map.mapArr.map((tile, idx) => {
     if (tile.terrain === 'wall') {
-      dispArr.push(`<sp>${map.wallSym}</sp>`)
+      dispArr.push(`<sp class = ${map.wall.class}>${map.wall.sym}</sp>`)
     } else if (tile.terrain === 'floor') {
-      dispArr.push(`<sp>${map.floorSym}</sp>`)
+      dispArr.push(`<sp class = '${map.floor.class}'>${map.floor.sym}</sp>`)
     }
     c++
-    if ((idx + 1) % 30 === 0) {
+    if ((idx + 1) % width === 0) {
       dispArr.push('<br>')
     }
   })
-  console.log(dispArr)
+  dispArr[avatar.location] = avatar.symbol
   let display = dispArr.join('')
   document.getElementById('map').innerHTML = display
 }
@@ -51,3 +59,8 @@ function displayMap(map) {
 // makeRandomMap(maps.firstMap.mapArr)
 // console.log(maps.firstMap.mapArr.length)
 
+module.exports = {
+  makeRandomMap,
+  displayMap,
+  avatar
+}

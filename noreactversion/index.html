@@ -8,15 +8,18 @@
 </head>
 
 <body>
-	<div id="mapContainer" class="container">
-		<div>
-			Welcome to Tom's first attempt at a roguelike
-		</div>
-		<p id = 'turn-count'>Turns taken: 0</p>
-		<div id="map"></div>
-		<p id = 'alert' style = "position: relative; bottom: 26em;"></p>
+	<div class="container">
+		<h2>Tom's Roguelike</h2>
+		<button onclick=''>Start Game</button>
+		<p id='turn-count'>Turns taken: 0</p>
 	</div>
-
+	<div id="game-container" class="container">
+<div id = 'player-info'></div>
+		<div id="map"></div>
+		<div id = 'world-info'></div>
+	</div>
+	<div class = 'container'><p id = 'alert'></p></div>
+	<p id='alert' style="position: relative; bottom: 26em;"></p>
 	<script src="../bundle.js"></script>
 </body>
 

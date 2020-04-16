@@ -1,10 +1,12 @@
-/* div {
-  background-color: ;
-} */
 
 .container {
   text-align: center;
   background-color: white;
+  /* display: flex; */
+}
+
+#map-container {
+  height: 45em;
 }
 
 #map {
@@ -16,43 +18,26 @@
   font-family: "Courier New", Courier, monospace;
   transform: scale(1, .5);
   /* padding: 1em; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
-  bottom: 6em;
- }
+  bottom: 10em;
+   }
 
-/* .centred {
-  margin: auto;
-  display: grid;
+.entry-floor {
+  background-color: lightblue;
+}
 
-} */
+.entry-wall {
+  background-color: black;
+  /* box-shadow: inset 0 0 0 3px black; */
+}
 
+.unexplored {
+  color: grey;
+  background-color: grey;
+}
 
- /* div {
-  display: flex;
-  flex-wrap: wrap;
-border: 1px solid black;
-} */
-
-/* .tile {
-  font-size: small;
-  border: .5px solid black;
-  background-color: rgb(216, 208, 208);
-  height: 15px;
-  width: 15px; 
-  display: inline-block; 
-  padding:5px;
-  margin: 0 .5px;
-  text-align: center;
-  } */
-
-  /* .map{
-    margin: 2em auto;
-    width: 500px;
-    height: 500px;
-    text-align: center;
-    background-color: black;
-    position: relative;
-    border: 3px solid black
-  }
-   */
+.visible {
+  color: rgb(58, 57, 57);
+  background-color: grey;
+}
