@@ -1,22 +1,48 @@
 import React from 'react'
-
+import createId from '../scripts/createId.js'
 import Tile from './Tile.jsx'
 
 class Map extends React.Component {
 
 
   render() {
-    const arr = Array(400).fill(0)
+    const arr = Array(400).fill('.')
     return (
       < div className="map" > {
         arr.map((x, idx) => {
-          return <Tile key={idx} id = {idx} />
+          let id = createId()
+          return <Tile key={id} id = {id}/>
         })
       }
       </div >
     )
   }
 }
+
+
+
+
+// function drawMap() {
+//   for (var y = 0; y < rows; y++)
+//     for (var x = 0; x < cols; x++)
+//       asciidisplay[y][x].content = map[y][x];
+// }
+
+// function initMap() {
+//   // create a new random map
+//   map = [];
+//   for (var y = 0; y < rows; y++) {
+//     var newRow = [];
+//     for (var x = 0; x < cols; x++) {
+//       if (Math.random() > 0.8)
+//         newRow.push('#');
+//       else
+//         newRow.push('.');
+//     }
+//     map.push(newRow);
+//   }
+// }
+
 
 export default Map
 

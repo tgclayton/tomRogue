@@ -120,7 +120,8 @@ var Game = function Game() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Tile_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tile.jsx */ "./client/components/Tile.jsx");
+/* harmony import */ var _scripts_createId_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scripts/createId.js */ "./client/scripts/createId.js");
+/* harmony import */ var _Tile_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tile.jsx */ "./client/components/Tile.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -146,6 +147,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 
 
+
 var Map = /*#__PURE__*/function (_React$Component) {
   _inherits(Map, _React$Component);
 
@@ -164,16 +166,36 @@ var Map = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "map"
       }, " ", arr.map(function (x, idx) {
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tile_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: idx,
-          id: idx
+        var id = Object(_scripts_createId_js__WEBPACK_IMPORTED_MODULE_1__["default"])();
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Tile_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          key: id,
+          id: id
         });
       }));
     }
   }]);
 
   return Map;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component); // function drawMap() {
+//   for (var y = 0; y < rows; y++)
+//     for (var x = 0; x < cols; x++)
+//       asciidisplay[y][x].content = map[y][x];
+// }
+// function initMap() {
+//   // create a new random map
+//   map = [];
+//   for (var y = 0; y < rows; y++) {
+//     var newRow = [];
+//     for (var x = 0; x < cols; x++) {
+//       if (Math.random() > 0.8)
+//         newRow.push('#');
+//       else
+//         newRow.push('.');
+//     }
+//     map.push(newRow);
+//   }
+// }
+
 
 /* harmony default export */ __webpack_exports__["default"] = (Map); // module.exports = {
 //   create
@@ -260,20 +282,56 @@ var Tile = /*#__PURE__*/function (_React$Component) {
     _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "state", {
-      className: 'tile',
-      style: {}
+      classNames: ['tile'],
+      symbol: _this.setTile(),
+      style: null
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "check", function () {
+      console.log('Check worked');
+      console.log(_assertThisInitialized(_this));
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "tileInfo", function () {
+      console.log(_assertThisInitialized(_this));
+
+      if (_this.state.symbol === '#') {
+        alert('This is a wall');
+      } else if (_this.state.symbol === '.') {
+        alert('This tile is empty');
+      }
     });
 
     return _this;
   }
 
   _createClass(Tile, [{
+    key: "setTile",
+    // constructor(props) {
+    //   super(props)
+    //   this.state.symbol = this.setTile()
+    // }
+    value: function setTile() {
+      if (Math.random() > 0.8) return '#';else return '.';
+    }
+  }, {
+    key: "symbolChange",
+    value: function symbolChange(sym) {
+      this.setState({
+        classNames: ['tile'],
+        symbol: sym,
+        style: {}
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        id: this.props.id,
         style: this.state.style,
-        className: this.state.className
-      }, this.props.id);
+        className: "tile",
+        onClick: this.tileInfo
+      }, this.state.symbol);
     }
   }]);
 
@@ -297,18 +355,120 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_Game_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Game.jsx */ "./client/components/Game.jsx");
+/* harmony import */ var _scripts_detectKeystroke_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./scripts/detectKeystroke.js */ "./client/scripts/detectKeystroke.js");
+/* harmony import */ var _components_Game_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Game.jsx */ "./client/components/Game.jsx");
 
 
+
+
+console.log('Toms Rogue');
+window.addEventListener("keydown", function (e) {
+  // if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) { // stops arrow keys scrolling window
+  e.preventDefault();
+  Object(_scripts_detectKeystroke_js__WEBPACK_IMPORTED_MODULE_2__["default"])(e); // }
+}, false); // document.onkeydown = detect
 
 document.addEventListener('DOMContentLoaded', function () {
-  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Game_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('game'));
-}); // document.addEventListener('DOMContentLoaded', () => {
-//   ReactDOM.render(
-//     <App />,
-//     document.getElementById('app')
-//   )
-// })
+  react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Game_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null), document.getElementById('game'));
+});
+
+/***/ }),
+
+/***/ "./client/scripts/createId.js":
+/*!************************************!*\
+  !*** ./client/scripts/createId.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var id = 0;
+
+function createId() {
+  id++;
+  return id;
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (createId);
+
+/***/ }),
+
+/***/ "./client/scripts/detectKeystroke.js":
+/*!*******************************************!*\
+  !*** ./client/scripts/detectKeystroke.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+function detectKeyStroke(event) {
+  //determines which arrow key is pressed and acts accordingly
+  // move(event.keycode)
+  switch (event.keyCode) {
+    case 12:
+      ; //num5
+
+      console.log('stayed put');
+      break;
+
+    case 37:
+      ; //left
+
+      var el = document.getElementById('5'); // console.log(el)
+
+      document.getElementById('5').check;
+      break;
+
+    case 38:
+      ; //up
+
+      console.log('up');
+      break;
+
+    case 39:
+      ; //right
+
+      console.log('right');
+      break;
+
+    case 40:
+      ; //down
+
+      console.log('down');
+      break;
+
+    case 34:
+      ; //down-right
+
+      console.log('down-right');
+      break;
+
+    case 35:
+      ; //down-left
+
+      console.log('down-left');
+      break;
+
+    case 36:
+      ; //up-left
+
+      console.log('up-left');
+      break;
+
+    case 33:
+      ; //up-right
+
+      console.log('up-right');
+      break;
+
+    default:
+      console.log('detectKeystroke reached default, keycode was', event.keyCode);
+  }
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (detectKeyStroke);
 
 /***/ }),
 
