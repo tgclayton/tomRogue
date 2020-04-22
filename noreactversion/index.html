@@ -3,23 +3,43 @@
 <head>
 	<title>Toms Roguelike</title>
 	<!-- <script src="phaser.min.js"></script> -->
-
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="./styles/main.css">
 </head>
 
-<body>
-	<div class="container">
-		<h2>Tom's Roguelike</h2>
-		<button onclick=''>Start Game</button>
-		<p id='turn-count'>Turns taken: 0</p>
+<body style="position:relative">
+	<br>
+	<div class="map-container"><div id="map"></div></div>
+	<div class="centre-contain">
+		<h1 class='centre-child' style="margin-top: 0;">Tom's Roguelike</h1>
 	</div>
-	<div id="game-container" class="container">
-<div id = 'player-info'></div>
-		<div id="map"></div>
-		<div id = 'world-info'></div>
+	<div class="flex-container">
+		
+		<div class="left-column column">
+			<div id='player-info'>
+				<p id = 'player-hp'>Player HP is:</p>
+				<p id = 'player-location'>Player is in Columnn: Row:</p>
+			</div>
+		</div>
+
+		<div class="centre-column column">
+			<button id = 'start-button'>Start Game</button>
+			<p id='turn-count'>Turns taken: 0</p>
+			<div class="map-block">		</div>
+			
+			<p id='alert' >Alerts go here</p>
+		</div>
+
+		<div class=" right-column column">
+			<div id='world-info'></div>
+		</div>
+
+
+		<div id="game-container" class="container"> </div>
+		<!-- <div class='container'></div> -->
+		<!-- <p id='alert' style="position: relative; bottom: 26em;"></p> -->
 	</div>
-	<div class = 'container'><p id = 'alert'></p></div>
-	<p id='alert' style="position: relative; bottom: 26em;"></p>
 	<script src="../bundle.js"></script>
 </body>
 

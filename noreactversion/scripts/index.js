@@ -6,38 +6,30 @@ var width = 35
 
 
 var actors = 10
-
-const map = require('./map.js')
-const maps = require('../data/maps')
+const avatars = require('../data/avatars.js')
+const map = require('./mapFunctions.js')
+const maps = require('../data/maps.js')
 const turn = require('./turn.js')
-const key = require('./key')
+const key = require('./key.js')
 
-map.makeRandomMap(maps.firstMap.mapArr, height, width)
-// console.log(maps.firstMap.mapArr)
-map.displayMap(maps.firstMap, width)
- 
+document.getElementById('start-button').addEventListener('click', startGame)
 
-// document.addEventListener('keydown', e => key.detectKeyStroke(e, height, width))
+function startGame() {
+  turn.resetTurns()
+  map.makeRandomMap(maps.firstMap, height, width, 0)
+  map.addAvatar(maps.screens[0])
+  map.displayMap(maps.screens[0])
+}
 
-// let avatar = {
-//   symbol: '@',
-//   location: 0,
-
-// }
-
-// function addAvatar() {
-//   avatar.location = Math.floor(map.length / 2)
-// }
-
-// function displayMap() {
-//   map[avatar.location] = avatar.symbol
-//   let display = map.join('')
-//   document.getElementById('map').innerHTML = display
-// }
+function removeElement(elementId) {
+  // Removes an element from the document
+  var element = document.getElementById(elementId);
+  element.parentNode.removeChild(element);
+}
 
 
-// addAvatar()
-// displayMap(map)
+document.addEventListener('keydown', e => key.detectKeyStroke())
 module.exports = {
-  turnCount
+  height,
+  width,
 }

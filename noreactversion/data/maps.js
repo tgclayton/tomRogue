@@ -1,23 +1,23 @@
-var firstMap = {
-  mapArr: [],
+
+const firstMap = {
   floor: {
-    sym: '-',
+    sym: '~',
     class: 'entry-floor',
   },
   wall: {
     sym: '#',
     class: 'entry-wall',
-  }
-
+  },
+  enemies: ['orc', 'goblin']
 }
+
+var agents = []
+var screens = []
+
 
 module.exports = {
-  firstMap
-}
+  firstMap,
+  agents,
+  screens,
+  }
 
-// const map = require('../scripts/map.js')
-
-
-
-
-// console.log(firstMap)

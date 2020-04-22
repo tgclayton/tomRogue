@@ -1,8 +1,6 @@
-exports.module = {
-  goblin
-}
 
-goblin = {
+
+var goblin = {
   symbol: 'g',
   details: {
     name: 'Goblin Warrior',
@@ -12,7 +10,7 @@ goblin = {
   }
 }
 
-orc = {
+var orc = {
   symbol: 'o',
   details: {
     name: 'Orc Warrior',
@@ -20,4 +18,9 @@ orc = {
     armour: 4,
     attack: 7,
   }
+}
+
+module.exports = {
+  goblin,
+  orc
 }
