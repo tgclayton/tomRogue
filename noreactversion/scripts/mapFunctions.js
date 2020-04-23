@@ -59,7 +59,14 @@ function getNeighboursThreeOut(coords) {
 }
 
 function addAgents(agents) {
-
+  let edgeTiles = []
+for (let i = 0 ; i < 35; i++){
+edgeTiles.push(i)
+if (i > 0){
+  edgeTiles.push(i * 35)
+  edgeTiles.push((i*35) + 34)
+}
+}
 }
 
 function checkExplored(screen) {
